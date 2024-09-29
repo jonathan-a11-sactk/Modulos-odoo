@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<odoo>
+    <data>
+    
+        <template id="page1" name="Products">
+			<t t-call="website.layout">
+				<div class="oe_structure">		
+					<div class="container border-success">
+						<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+							<div class="container-fluid">
+		    					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+		     						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		        						<li class="nav-item">
+											<div class="d-md-flex align-items-center">
+		                        				<a class="nav-link active text-center" aria-current="page" href="/website_sheet_product/page1">Products</a>
+		                   					</div>
+		        						</li>
+		      						</ul>
+		      						<form class="d-flex" role="search" method="GET" action="/website_sheet_product/page1">
+		      							<input class="form-control me-2" type="search" name="search" placeholder="Busca producto" aria-label="Search" t-att-value="search_term"/>
+		      							<button class="btn btn-outline-success" type="submit">Search</button>
+		    						</form>
+		    					</div>
+		  					</div>
+						</nav>
+                        <h1 class="text-center p-3">Products</h1>
+                        <div class="row pb-10" >	 
+							<t t-foreach="products" t-as="product">
+								<div class="col-md-2"  >
+									<div class="card border-success" style="height: 275px;" >
+										<div class="p-2	d-flex justify-content-center align-items-center" style="height: 125px;">
+											<img t-attf-src="/web/image?model=product.template&amp;id=#{product.id}&amp;field=image_1920" class="img-fluid rounded-start w-75 h-75 border border-success"/>
+										</div>	
+                                        <div class="card-body border-success" style="height: 80px;">
+                                           <p class="text-center small "><t t-esc="product.default_code"/></p>
+                                            <p class="text-center	small	mb-2 "><t t-esc="product.name"/></p>
+                                        </div>
+                                        <br/>
+                                        <a class="btn btn-success  mt-2 " t-att-href="'/website_sheet_product/page2/' + str(product.id)">View Product</a>
+                                        <br/>   
+                                    </div>
+                                </div>    
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+ 
+	 
+
+        
+       <template id="page2" name="Product">
+            <t t-call="website.layout">
+                <div class="oe_structure p-4">
+                    <div class="container ">	
+                        <h1 class="text-center p-4 "> Data sheet </h1>
+                        <a class="btn btn-success" href="/website_sheet_product/page1">Go back</a>
+                        <div class="card mb-3 border-success" style="max-width: 1550px; ">
+  							<div class="row g-0">
+    							<div class="col-md-5 p-4 d-flex justify-content-center align-items-center" style="height: 270px;">						
+									<t t-if="product.image_1920">
+   										<img t-attf-src="/web/image?model=product.template&amp;id=#{product.id}&amp;field=image_1920" class="img-fluid rounded-start w-75 h-75 border border-success"/>
+    								</t>
+    								<t t-else="">
+        								<div class="img-placeholder">No image available</div>
+    								</t>	
+    							</div>
+    						<div class="col-md-7 pl-10">
+      							<div class="card-body " >
+        							<table class="table border border-success p-2" >
+										<thead class=" border border-success ">
+											<tr class="text-center"	>
+												<th  colspan="4"> General information </th>
+											</tr>
+										</thead>
+										<tbody class="border border-success">
+											<tr class="table-active text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>Name:</strong></td>
+												<td class="border border-success small"><t t-esc="product.name"/></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Barcode:</strong> </td>
+												<td class="border border-success small"><t t-esc="list_record['alternate_code']"/></td>
+											</tr>
+											<tr class="text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;">
+    												<strong>Kind of product:</strong>	
+												</td>
+												<td>
+													<t t-if="product.detailed_type == 'product'">
+        												<t class="small" t-esc="'Almacenable'"/>
+    												</t>
+   													 <t t-if="product.detailed_type == 'consu'">
+       													<t class="small" t-esc="'Consumible'"/> 
+													</t>		
+													<t t-if="product.detailed_type == 'service'">
+       													 <t class="small" t-esc="'Servicio'"/>
+   													 </t>
+												</td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Product Category:</strong> </td>
+												<td><t t-esc="product.categ_id.name"/></td>
+											</tr>
+											<tr class="table-active text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>Internal reference:</strong> </td>
+												<td><t t-esc="product.default_code"/></td>
+												<td class="border border-success" style="font-weight: bold;"><strong>Brand:</strong> </td>
+												<td>
+													<t t-if="list_record.get('code_trademark')">
+            											<t t-esc="list_record['code_trademark']"/>
+        											</t>
+        											<t t-else="">
+        											</t>
+   	 											</td>
+											</tr>
+											<tr class="text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>Family:</strong> </td>
+												<td>
+													<t t-if="list_record.get('code_family')">
+            											<t t-esc="list_record['code_family']"/>
+        											</t>
+        											<t t-else="">
+													</t>
+												</td>
+												<td class="border border-success"><strong>Barcode type</strong> </td>
+												<td>
+													<t t-if="list_record.get('barcode_type')">
+            											<t t-esc="list_record['barcode_type']"/>
+        											</t>
+        											<t t-else="">
+													</t>
+												</td>	
+											</tr>
+											<tr class="table-active text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>NSO:</strong> </td>
+												<td>
+													<t t-if="list_record.get('et_nso')">
+            											<t t-esc="list_record['et_nso']"/>
+        											</t>
+        											<t t-else="">
+													</t>
+												</td>
+												<td class="border border-success" style="font-weight: bold;"><strong>Code Label</strong></td>
+												<td>
+													<t t-if="list_record.get('code_label')">
+            											<t t-esc="list_record['code_label']"/>
+        											</t>
+        											<t t-else="">
+													</t>
+   	 											</td>
+											</tr>			
+										</tbody>
+									</table>
+      							</div>
+    						</div>
+  						</div>
+  						<div class="row g-0 " >  
+								<div class="col-md-10 pl-12">
+      							<div class="card-body ">
+        							<table class="table border border-success p-1" style="width: 1075px; font-size: 13px;">
+										<thead class=" border border-success">
+											<tr class="text-center">
+												<th colspan="9"> Raw Material </th>
+											</tr>										
+										</thead>
+										<tbody class="border border-success">
+											<tr class="table-active text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>Description</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Product</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Family</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Specifications</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"> <strong>Tolerance</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>State</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Appearance</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Color</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Control parameters</strong> </td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Determination</strong></td>	
+												<td class="border border-success small" style="font-weight: bold;"><strong>Document</strong></td>
+											</tr>
+    										<t t-foreach="list_record.get('list_boms')" t-as="bom">
+        									<t t-foreach="bom.get('list_products')" t-as="product">
+            								<tr class="text-center border border-success small">
+												<td>
+													<a class="btn btn-success mt-2" t-att-href="'/website_sheet_product/page3/' + str(product.get('product_id'))" target="_blank"><t t-esc="product.get('mrp_description')"/></a>
+												</td>
+                                				<td class="border border-success small"><t t-esc="product.get('product_name')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_family')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_specifications')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_tolerance')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_state')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_appearance')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_color')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_parameters_c')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_determination')"/></td>
+                                				<td class="border border-success small"><t t-esc="product.get('mrp_document')"/></td>		
+                            				</tr>
+        									</t>
+    										</t>
+										</tbody>
+									</table>
+      							</div>			
+    						</div>
+  						<div class="row g-0 " >
+							  <div class="col-md-6 pl-12">
+      							<div class="card-body ">
+        							<table class="table border border-success p-1">
+										<thead class=" border border-success">
+											<tr class="text-center">
+												<th colspan="4" > Presentation verification </th>
+											</tr>	
+										</thead>
+					
+										<tbody class="border border-success">
+											<tr class="table-active text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>Description</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Worth</strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Unit of measurement</strong></td>
+											</tr>
+											<tr class="text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>Content sheath </strong></td>
+												<td>
+													<t t-if="list_record.get('uom_po_id')">	
+														<t t-esc="list_record.get('uom_po_id')"/>
+													</t>
+													<t t-else="">
+													</t>
+												</td>
+												<td class="border border-success">
+													<t t-if="list_record.get('bale_content')">	
+														<t t-esc="list_record.get('bale_content')"/>
+													</t>
+													<t t-else="">
+													</t>			
+												</td>	
+											</tr>
+											<tr class="table-active text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>Package contents:</strong> </td>
+												<td class="border border-success">
+													<t t-if="list_record.get('uom_po_id')">	
+														<t t-esc="list_record.get('uom_po_id')"/>
+													</t>
+													<t t-else="">
+													</t>			
+												</td>
+												<td class="border border-success">
+													<t t-if="list_record.get('package_contents')">	
+														<t t-esc="list_record.get('package_contents')"/>
+													</t>
+													<t t-else="">
+													</t>		
+												</td>							
+											</tr>
+											<tr class="text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>Date of expiry</strong> </td>
+												<td colspan="2">
+													<t t-if="list_record.get('product_duration')">	
+														<t t-esc="list_record.get('product_duration')"/>
+													</t>
+													<t t-else="">
+													</t>
+												</td>		
+											</tr>
+											<tr class=" text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>Batch</strong> </td>
+												<td colspan="2">
+													<p>6 digits according to the Julian calendar</p>
+												</td>			
+											</tr>
+											<tr class="table-active text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>PVP</strong> </td>
+												<td class="border border-success" colspan="2">
+													<t t-if="list_record.get('list_price')">	
+														<t t-esc="list_record.get('list_price')"/>
+													</t>
+													<t t-else="">
+													</t>		
+												</td>				
+											</tr>
+											<tr class=" text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>EAN128</strong> </td>
+												<td colspan="2">
+													<p>(01) No. ean14(17)F.expiration(10)batch number</p>
+												</td>			
+											</tr>	
+										</tbody>
+									</table>
+      							</div>
+    						</div>		  
+								<div class="col-md-6 pl-10">
+      							<div class="card-body ">
+        							<table class="table border border-success p-2">
+										<thead class=" border border-success">
+											<tr class="text-center">
+												<th colspan="4"  > SKU information </th>
+											</tr>		
+										</thead>
+										<tbody class="border border-success">
+											<tr class="table-active text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>Length in cm</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('largo')"/>
+												</td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Width in cm</strong> </td>
+												<td class="border border-success small"><t t-esc="list_record.get('ancho')"/>	
+												</td>	
+											</tr>
+											<tr class="text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>Height in cm</strong></td>
+												<td><t t-esc="list_record.get('alto')"/>
+												</td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Product net weight</strong> </td>
+												<td><t t-esc="list_record.get('product_net_weight')"/></td>
+											</tr>
+											<tr class="table-active text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>Stacking levels</strong> </td>
+												<td><t t-esc="list_record.get('i_sku_stacking')"/>	
+												</td>
+												<td class="border border-success" style="font-weight: bold;"><strong>Number of box or packages per level</strong> </td>
+												<td><t t-esc="list_record.get('i_sku_by_level')"/></td>
+											</tr>
+											<tr class="text-center border border-success small">
+												<td class="border border-success" style="font-weight: bold;"><strong>Number of box or packages per pallet</strong> </td>
+												<td class="border border-success"><t t-esc="list_record.get('i_sku_per_pallet')"/>
+												</td>
+												<td class="border border-success" style="font-weight: bold;"><strong>Gross product weight</strong> </td>
+												<td class="border border-success"><t t-esc="list_record.get('gross_product_weight')"/>
+												</td>
+											</tr>
+											<tr class="table-active text-center border border-success">
+												<td colspan="2" class="border border-success" style="font-weight: bold;"><strong>Section</strong></td>
+												<td colspan="2" style="font-weight: bold;">Primary packaging</td>
+											</tr>
+											<tr>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Long</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('long_ep')"/></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Broad</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('broad_ep')"/></td>
+											</tr>
+											<tr class="table-active text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>High</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('high_ep')"/></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Product net weight</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('net_weight_ep')"/></td>
+											</tr>
+											<tr>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Gross product weight</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('gross_weight_ep')"/></td>
+											</tr>
+											<tr class="table-active text-center border border-success">
+												<td colspan="2" class="border border-success" style="font-weight: bold;"><strong>Section</strong></td>
+												<td colspan="2" style="font-weight: bold;">Secondary package</td>
+											</tr>
+											<tr >
+												<td class="border border-success small" style="font-weight: bold;"><strong>Long</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('long_es')"/></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Broad</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('broad_es')"/></td>
+											</tr>
+											<tr class="table-active text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>High</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('high_es')"/></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Product net weight</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('net_weight_es')"/></td>
+												
+											</tr>
+											<tr>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Gross product weight</strong></td>
+												<td class="border border-success small"><t t-esc="list_record.get('gross_weight_es')"/></td>
+											</tr>
+											
+										</tbody>
+									</table>
+      							</div>
+    						</div>
+    									  
+						  </div>  
+						  </div>
+						  
+						  <div class="row g-0 " >
+								<div class="col-md-8 pl-10">
+      							<div class="card-body ">
+        							<table class="table border border-success p-2">
+										<thead class=" border border-success">
+											<tr class="text-center">
+												<th colspan="5" > QA </th>
+											</tr>		
+										</thead>
+										<tbody class="border border-success">
+											<tr class="table-active text-center border border-success">
+												<td class="border border-success small" style="font-weight: bold;"><strong>Trigger </strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Test </strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Responsible </strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Companies </strong></td>
+												<td class="border border-success small" style="font-weight: bold;"><strong>Product template </strong></td>
+											</tr>
+											<t t-if="list_record.get('list_boms')">
+												<t t-foreach="list_record['list_boms']" t-as="bom">
+    												<t t-foreach="bom['iqc']" t-as="qc">
+        												<tr class="text-center border border-success small">
+            												<td class="border border-success small">
+																<t t-if="qc.get('trigger')">	
+																	<t t-esc="qc.get('trigger')"/>
+																</t>
+																<t t-else="">
+																</t>		
+															</td>
+            												<td class="border border-success small">
+																<t t-if="qc.get('test')">	
+																	<t t-esc="qc.get('test')"/>
+																</t>
+																<t t-else="">
+																</t>
+															</td>
+            												<td class="border border-success small">
+																<t t-if="qc.get('user')">	
+																	<t t-esc="qc.get('user')"/>
+																</t>
+																<t t-else="">
+																</t>
+															</td>
+            												<td class="border border-success small">
+																<t t-if="qc.get('partners')">	
+																	<t t-esc="qc.get('partners')"/>
+																</t>
+																<t t-else="">
+																</t>	
+															</td>
+            												<td class="border border-success small">
+																<t t-if="qc.get('product_template')">	
+																	<t t-esc="qc.get('product_template')"/>
+																</t>
+																<t t-else="">
+																</t>	
+															</td>
+        												</tr>
+    												</t>
+												</t>
+												</t>
+												<t t-else="">		
+												</t>
+										</tbody>
+									</table>
+      							</div>
+      							
+    						</div>			  
+						  </div>
+						  <div class="row g-0">
+    						<div class="col-md-12 pl-5" style="border: 1px ; margin-right: 5px; ">
+        						<h3 class="text-center" style="font-weight: bold;">
+            					Product Images Section
+            				<button class="btn btn-primary btn-show-modal" data-bs-toggle="modal" data-bs-target="#imageModal">Show Images</button>
+        					</h3>
+    						</div>
+						</div>
+						<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    						<div class="modal-dialog modal-lg">
+        					<div class="modal-content">
+            				<div class="modal-header">
+                			<h5 class="modal-title" id="imageModalLabel">Product Images</h5>
+                			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            			</div>
+            			<div class="modal-body">
+                		<div class="text-center">
+                    	<t t-if="list_record.get('list_url')">
+                        	<table style="margin: 0 auto;">
+                            	<tr>
+                                	<t t-foreach="list_record['list_url']" t-as="url_info">
+                                    	<td style="border: 1px solid green; padding: 10px;">
+                                        	<h4 style="margin-bottom: 5px; font-size: 16px;"><t t-esc="url_info['name']"/></h4>
+                                        	<img t-att-src="url_info['url']" t-att-alt="url_info['name']" style="height: 160px; width: 160px;"/>
+                                    	</td>
+                                	</t>
+                            	</tr>
+                        	</table>
+                    	</t>
+                	</div>
+            	</div>
+            	<div class="modal-footer">
+                	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            	</div>
+       			 </div>
+    			</div>
+				</div> 	
+  						<a class="btn btn-success" href="/website_sheet_product/page1" style="margin-top: 3px;">Go back</a>
+					</div>
+                    </div>
+                </div>
+            </t> 
+        </template>
+        
+		<template id="page3" name="Quality">   
+    		<t t-call="website.layout">
+		        <div class="container mt-3">
+					<div class="row">
+		                <div class="col-md-12">
+							<table class="table table-bordered table-success table-hover mx-auto"> 
+		    					<thead>
+				        			<tr>
+				            			<th colspan="5" class="text-center"><h3>Quality List</h3></th>
+				        			</tr>
+				        			<tr>
+				            			<th>User</th>
+				           	 			<th>Product</th>
+				            			<th>Trigger</th>
+				            			<th>Test</th>
+				            			<th>Partners</th>
+				        			</tr>
+		    					</thead>
+			    				<tbody>
+				    				<t t-if="not bom_quality_list">
+					    				<tr>
+					        				<td colspan="5">
+					            				<h4>There is no quality list for this material.</h4>
+					        				</td>
+					    				</tr>
+									</t>
+				        			<t t-foreach="bom_quality_list" t-as="quality">
+				            			<tr>
+				                			<td><t t-esc="quality.get('user')"/></td>
+				                			<td><t t-esc="quality.get('product_template')"/></td>
+				                			<td><t t-esc="quality.get('trigger')"/></td>
+				                			<td><t t-esc="quality.get('test')"/></td>
+				                			<td><t t-esc="quality.get('partners')"/></td>
+				            			</tr>
+				        			</t>
+			    				</tbody>
+							</table>
+		                </div>
+		            </div>
+		        </div>
+    		</t> 
+		</template>
+         
+    </data>
+</odoo>

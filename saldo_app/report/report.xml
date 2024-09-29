@@ -1,0 +1,21 @@
+<odoo>
+    <!-- Definición del Reporte -->
+    <report
+        id="report_sa_movimiento"
+        string="Reporte personalizado"
+        model="sa.movimiento"
+        report_type="qweb-pdf"
+        name="saldo_app.report_sa_movimiento_template"
+    />
+
+    <!-- Plantilla del Reporte -->
+    <template id="report_sa_movimiento_template">
+        <t t-call="web.html_container">
+            <t t-foreach="doc" t-as="line">
+                <t t-call="web.external_layout">
+                    <h1><t t-esc="line.name"/></h1>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

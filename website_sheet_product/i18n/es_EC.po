@@ -1,0 +1,398 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_sheet_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e-20231019\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-30 22:52+0000\n"
+"PO-Revision-Date: 2024-08-30 22:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "(01) No. ean14(17)F.expiration(10)batch number"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "6 digits according to the Julian calendar"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Appearance</strong>"
+msgstr "Apariencia"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Barcode type</strong>"
+msgstr "Tipo de código de barras"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Barcode:</strong>"
+msgstr "Código de barras"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Batch</strong>"
+msgstr "Lote"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Brand:</strong>"
+msgstr "Marca"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Broad</strong>"
+msgstr "Ancho en cm"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Code Label</strong>"
+msgstr "<strong>Codigo Etiqueta</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Color</strong>"
+msgstr "<strong>Color</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Companies </strong>"
+msgstr "<strong>Compañías</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Content sheath </strong>"
+msgstr "<strong>Contenido de la Funda</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Control parameters</strong>"
+msgstr "<strong>Parámetros de control</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Date of expiry</strong>"
+msgstr "<strong>Fecha de expiración</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Determination</strong>"
+msgstr "<strong>Determinación</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Document</strong>"
+msgstr "<strong>Documento</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>EAN128</strong>"
+msgstr "<strong>EAN128</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Family:</strong>"
+msgstr "<strong>Familia:</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Family</strong>"
+msgstr "<strong>Familia</strong>"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Gross product weight</strong>"
+msgstr "Peso bruto del producto"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Height in cm</strong>"
+msgstr "Alto en cm"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>High</strong>"
+msgstr "Alto en cm"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Internal reference:</strong>"
+msgstr "Referencia interna"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Kind of product:</strong>"
+msgstr "Tipo de producto"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Length in cm</strong>"
+msgstr "Largo en cm"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Long</strong>"
+msgstr "Largo en cm"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>NSO:</strong>"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Name:</strong>"
+msgstr "Nombre"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Number of box or packages per level</strong>"
+msgstr "Número de cajas o paquetes por nivel"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Number of box or packages per pallet</strong>"
+msgstr "Número de cajas o paquetes por palet"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>PVP</strong>"
+msgstr "PVP"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Package contents:</strong>"
+msgstr "Contenido de la  Paca/Bulto"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Product Category:</strong>"
+msgstr "Categoria de producto"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Product net weight</strong>"
+msgstr "Peso neto del producto"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Product template </strong>"
+msgstr "Plantilla de producto"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Product</strong>"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Responsible </strong>"
+msgstr "Responsable"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Section</strong>"
+msgstr "Seccion"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Specifications</strong>"
+msgstr "Especificaciones"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Stacking levels</strong>"
+msgstr "Niveles de apilamiento"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>State</strong>"
+msgstr "Estado"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Test </strong>"
+msgstr "Prueba"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Tolerance</strong>"
+msgstr "Tolerancia"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Trigger </strong>"
+msgstr "Disparador"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Unit of measurement</strong>"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Width in cm</strong>"
+msgstr "Ancho en cm"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "<strong>Worth</strong>"
+msgstr "Valor"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page1
+msgid "Busca producto"
+msgstr "Search product"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Data sheet"
+msgstr "Ficha de datos"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "General information"
+msgstr "Informacion General"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Go back"
+msgstr "Regresar"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "No image available"
+msgstr "No hay imagen disponible"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page3
+msgid "Partners"
+msgstr "Contactos"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Presentation verification"
+msgstr "Presentación de verificación"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Primary packaging"
+msgstr "Empaquetado principal"
+
+#. module: website_sheet_product
+#: model:ir.model,name:website_sheet_product.model_product_template
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page3
+msgid "Product"
+msgstr "Producto"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Product Images"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Product Images Section"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page1
+msgid "Products"
+msgstr "Productos"
+
+#. module: website_sheet_product
+#: model:ir.model.fields,field_description:website_sheet_product.field_product_product__website_status
+#: model:ir.model.fields,field_description:website_sheet_product.field_product_template__website_status
+msgid "Publish on website"
+msgstr "Publicar en sitio web"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "QA"
+msgstr "Lista de calidad"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page3
+msgid "Quality List"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Raw Material"
+msgstr "Lista de Materiales"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "SKU information"
+msgstr "SKU Informacion"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page1
+msgid "Search"
+msgstr "Buscar"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Secondary package"
+msgstr "Paquete secundario"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page2
+msgid "Show Images"
+msgstr "Mostrar Imagen"
+
+#. module: website_sheet_product
+#: model:website.menu,name:website_sheet_product.menu_product_main
+msgid "Technical Product Sheet"
+msgstr "Ficha Técnica de Productos"
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page3
+msgid "Test"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page3
+msgid "There is no quality list for this material."
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page3
+msgid "Trigger"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page3
+msgid "User"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.page1
+msgid "View Product"
+msgstr ""
+
+#. module: website_sheet_product
+#: model_terms:ir.ui.view,arch_db:website_sheet_product.product_template_only_form_view_website_sheet_product
+msgid "Website"
+msgstr "Sitio web"

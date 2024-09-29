@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--VIstas para el modelo de movimiento-->
+    <record id="sa_movimiento_tree_view" model="ir.ui.view">
+        <field name="name">Tree movimiento</field>
+        <field name="model">sa.movimiento</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type_movimiento" widget="radio"/>
+                            <field name="date"/>
+                            <field name="category_id"/>
+                        </group>
+                        <group>
+                            <field name="currency_id"/>
+                            <field name="amount" widget="monetary" options="{'currency_field':'currency_id'}"/>
+                            <field name="receipt_name" widget="image"/>
+                            <field name="res_user_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="notas"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <fied name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="view_tree_sa_movimiento" model="ir.ui.view">
+        <field name="name">view.tree.sa.movimiento</field>
+        <field name="model">sa.movimiento</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="type_movimiento == 'ingreso'" decoration-danger="type_movimiento == 'gasto'">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="type_movimiento"/>
+                <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="currency_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_search_movimiento" model="ir.ui.view">
+        <field name="name">view.search.movimiento</field>
+        <field name="model">sa.movimiento</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="receipt_name"/>
+                <filter name="filter_type_movimiento" string="Ingresos" domain="[('type_movimiento', '=', 'ingreso')]"/>
+                <filter name="filter_type_movimiento_gasto" string="Gastos" domain="[('type_movimiento','=','gasto')]"/>
+            </search>
+        </field>
+    </record>
+    <record id="view_form_res_users" model="ir.ui.view">
+        <field name="name">view.form.res.users</field>
+        <field name="model">res.users</field>
+        <!-- Asegúrate de que 'base.view_users_simple_form' existe y es la vista que quieres heredar -->
+        <field name="inherit_id" ref="base.view_users_simple_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile']" position="after">
+                <field name="movimientos_ids"/>
+                <field name="movimientos_ingresos"/>
+                <field name="movmientos_gastos"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="search_sa_movmiento_nueva" model="ir.ui.view">
+        <field name="name">search_movmiento</field>
+        <field name="model">sa.movimiento</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="type_name_gasto" string="Gasto" domain="[('type_movimiento','=','gasto')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Funcion para servidor de ventana-->
+    <record id="action_server_res_user" model="ir.actions.server">
+        <field name="name">Esta accion de ventaana habre el modelo de usuarios</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="state">code</field>
+        <field name="code">action=model.menu_root()</field>
+    </record>
+
+
+
+    <!-- Vistas para el modelo de categoria -->
+    <record id="view_form_sa_categoria" model="ir.ui.view">
+        <field name="name">view.form.sa.sa.movimiento</field>
+        <field name="model">sa.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <gruup>
+                            <button name="ver_movimiento" string="Ver movimiento" type="object"/>
+                        </gruup>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--Acciones de ventana-->
+    <record id="action_sa_movimiento" model="ir.actions.act_window">
+        <field name="name">Movimiento</field>
+        <field name="res_model">sa.movimiento</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- Acciones de ventana para filtros de movmiento-->
+    <record id="action_sa_movmiento_ingreso" model="ir.actions.act_window">
+        <field name="name">action_sa.movmiento_ingresos</field>
+        <field name="res_model">sa.movimiento</field>
+        <field name="domain">[("type_movimiento","=","ingreso")]</field>
+    </record>
+
+    <record id="action_sa_movmiento_gasto" model="ir.actions.act_window">
+        <field name="name">action_sa_movmiento_gasto</field>
+        <field name="res_model">sa.movimiento</field>
+        <field name="domain">[("type_movimiento","=","gasto")]</field>
+        <field name="search_view_id" ref="search_sa_movmiento_nueva"/>
+    </record>
+
+    <record id="action_sa_category" model="ir.actions.act_window">
+        <field name="name">Categoría</field>
+        <field name="res_model">sa.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_sa_tag" model="ir.actions.act_window">
+        <field name="name">Tag</field>
+        <field name="res_model">sa.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--Menus-->
+    <menuitem id="menu_micuenta" action="saldo_app.action_server_res_user" name="Mi cuenta"/>
+    <menuitem id="saldo_app_menu_root" name="Saldo App" action="action_sa_movimiento"/>
+    <menuitem id="menu_movimiento" name="Movimiento"  parent="saldo_app_menu_root"/>
+    <menuitem id="menu_movimiento_todo" name="Todos los movmientos" action="action_sa_movimiento" parent="saldo_app.menu_movimiento"/>
+    <menuitem id="menu_movimiento_gasto" name="Movimientos Gastos" action="action_sa_movmiento_gasto" parent="saldo_app.menu_movimiento" />
+    <menuitem id="menu_movimiento_ingreso" name="Movmientos Ingresos" action="action_sa_movmiento_ingreso" parent="saldo_app.menu_movimiento" />
+    <menuitem id="menu_ajustes" name="Ajustes" action="action_sa_movimiento" parent="saldo_app_menu_root"/>
+    <menuitem id="menu_category" name="Categoría" action="action_sa_category" parent="menu_ajustes"/>
+    <menuitem id="menu_tag" name="Tag" action="action_sa_tag" parent="menu_ajustes"/>
+
+</odoo>

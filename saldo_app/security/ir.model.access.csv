@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sa_movimiento,sa.movimiento.access,model_sa_movimiento,base.group_system,1,1,1,1
+access_sa_category,sa.category.access,model_sa_category,base.group_system,1,1,1,1
+access_sa_tag,sa.tag.access,model_sa_tag,base.group_system,1,1,1,1
+
+access_sa_movimiento_basico,sa.movimiento.access,model_sa_movimiento,usuario_basico,1,1,1,1
+access_sa_category_basico,sa.category.access,model_sa_category,usuario_basico,1,1,1,1
+access_sa_tag_basico,sa.tag.access,model_sa_tag,usuario_basico,1,1,1,1
+
+access_sa_movimiento_intermedio,sa.movimiento.access,model_sa_movimiento,usuario_itermedio,1,1,1,1
+access_sa_category_intermedio,sa.category.access,model_sa_category,usuario_itermedio,1,1,1,1
+access_sa_tag_intermedio,sa.tag.access,model_sa_tag,usuario_itermedio,1,1,1,1
